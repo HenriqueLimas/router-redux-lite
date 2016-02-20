@@ -21,6 +21,9 @@ export function errorRoute(uri) {
     };
 }
 
+export function navigate(uri) {
+
+}
 // function navigate(dispatch, getState) {
 //     dispatchRequest();
 //     getCurrentRoute();
