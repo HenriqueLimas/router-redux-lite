@@ -1,5 +1,4 @@
 import expect from 'expect';
-import jsdom from 'jsdom';
 import {History} from '../../src';
 
 describe('History', function() {
