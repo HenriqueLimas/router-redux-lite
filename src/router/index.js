@@ -37,16 +37,18 @@ export function match(url, routes) {
 }
 
 function addSubscriberInto(store) {
-  let currentRoute;
+  let lastUri;
 
   store.subscribe(function() {
-    if (currentRoute && currentRoute.uri === store.getState().router.current.uri) {
-      return;
-    }
-
-    currentRoute = store.getState().router.current;
+    let currentRoute = store.getState().router.current;
 
     if (currentRoute && !currentRoute.isChanging && !currentRoute.didInvalidade) {
+      if (lastUri === currentRoute.uri) {
+        return;
+      }
+
+      lastUri = currentRoute.uri;
+
       let matchedRoutes = match(currentRoute.uri, _routes);
 
       matchedRoutes.forEach((match) => match.route.handler(currentRoute));
