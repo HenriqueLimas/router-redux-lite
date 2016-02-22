@@ -1,6 +1,6 @@
 import expect from 'expect';
-import * as actions from '../../src/actions';
-import {ROUTE_REQUEST, ROUTE_SUCCESS, ROUTE_ERROR} from '../../src/constants';
+import * as actions from '../src/actions';
+import {ROUTE_REQUEST, ROUTE_SUCCESS, ROUTE_ERROR} from '../src/constants';
 
 describe('Actions', function() {
   describe('requestRoute():', function() {
