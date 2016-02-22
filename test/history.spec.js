@@ -1,5 +1,5 @@
 import expect from 'expect';
-import {History} from '../../src';
+import {History} from '../src';
 
 describe('History', function() {
   it('should return a public API.', function() {
