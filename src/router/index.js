@@ -37,8 +37,14 @@ export function match(url, routes) {
 }
 
 function addSubscriberInto(store) {
+  let currentRoute;
+
   store.subscribe(function() {
-    let currentRoute = store.getState().router.current;
+    if (currentRoute && currentRoute.uri === store.getState().router.current.uri) {
+      return;
+    }
+
+    currentRoute = store.getState().router.current;
 
     if (currentRoute && !currentRoute.isChanging && !currentRoute.didInvalidade) {
       let matchedRoutes = match(currentRoute.uri, _routes);
