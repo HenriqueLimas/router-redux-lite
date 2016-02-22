@@ -38,9 +38,11 @@ function addSubscriberInto(store) {
   store.subscribe(function() {
     let currentRoute = store.getState().router.current;
 
-    let matchedRoutes = match(currentRoute.uri, _routes);
+    if (currentRoute && !currentRoute.isChanging && !currentRoute.didInvalidade) {
+      let matchedRoutes = match(currentRoute.uri, _routes);
 
-    matchedRoutes.forEach((route) => route.handler(currentRoute));
+      matchedRoutes.forEach((route) => route.handler(currentRoute));
+    }
   });
 }
 
