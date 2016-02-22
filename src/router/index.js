@@ -17,7 +17,7 @@ export function config({store, routes}) {
 /**
  * Function that returns all the routes that an url matched,
  * with his parms resolved.
- * 
+ *
  * @param  {[type]} url    [description]
  * @param  {[type]} routes [description]
  * @return {[type]}        [description]
@@ -77,7 +77,7 @@ function replaceDynamicURLParts(route) {
     })
     .replace(WILDCARD_REGEXP, REPLACE_WILDCARD) + FOLLOWED_BY_SLASH_REGEXP
   );
-  
+
   return { regexp, paramNames };
 
   function clean(s) {
@@ -87,7 +87,7 @@ function replaceDynamicURLParts(route) {
 
 /**
  * Function that return an object with key value where the key
- * is the params name and the value is the value from the list of matched strings. 
+ * is the params name and the value is the value from the list of matched strings.
  * @param  {[type]} match [description]
  * @param  {[type]} names [description]
  * @return {[type]}       [description]

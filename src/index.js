@@ -3,9 +3,21 @@ import * as History from './history';
 import reducer from './reducers';
 import * as actions from './actions';
 
+function config({state, routes, history}) {
+  Router.config({state, routes});
+
+  History.config({
+    store,
+    history
+  });
+
+  History.listen();
+}
+
 module.exports = {
-  History,
-  Router,
+  config,
   reducer,
-  actions
+  actions,
+  History,
+  Router
 };

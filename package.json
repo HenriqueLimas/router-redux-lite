@@ -1,5 +1,5 @@
 {
-  "name": "router-redux",
+  "name": "router-redux-lite",
   "version": "0.0.1",
   "description": "A router to using with redux",
   "main": "lib/index.js",
