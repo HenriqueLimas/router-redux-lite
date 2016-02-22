@@ -1,3 +1,5 @@
+import {navigate} from '../history';
+
 const PARAMETER_REGEXP = /([:*])(\w+)/g;
 const WILDCARD_REGEXP = /\*/g;
 const REPLACE_VARIABLE_REGEXP = '([^\/]+)';
@@ -41,7 +43,11 @@ function addSubscriberInto(store) {
     if (currentRoute && !currentRoute.isChanging && !currentRoute.didInvalidade) {
       let matchedRoutes = match(currentRoute.uri, _routes);
 
-      matchedRoutes.forEach((route) => route.handler(currentRoute));
+      matchedRoutes.forEach((match) => match.route.handler(currentRoute));
+
+      if (matchedRoutes.length) {
+        navigate(currentRoute.uri);
+      }
     }
   });
 }

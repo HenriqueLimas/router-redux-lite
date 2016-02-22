@@ -17,6 +17,34 @@ describe('Router', function() {
 
       expect(store.subscribe).toHaveBeenCalled();
     });
+
+    context('when the listen subscriber added is executed', function() {
+      it('should execute all the handlers of the routes matched.', function() {
+        let store = {
+          getState() {
+            return {
+              router: {
+                current: {
+                  uri: '/path'
+                }
+              }
+            };
+          },
+          subscribe(callback) {
+            callback();
+          }
+        };
+
+        let routes = [{
+          route: '/path',
+          handler: expect.createSpy()
+        }];
+
+        Router.config({store, routes});
+
+        expect(routes[0].handler).toHaveBeenCalledWith(store.getState().router.current);
+      });
+    });
   });
 
   describe('match():', function() {
