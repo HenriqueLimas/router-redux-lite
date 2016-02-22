@@ -3,8 +3,11 @@ import * as History from './history';
 import reducer from './reducers';
 import * as actions from './actions';
 
-function config({state, routes, history}) {
-  Router.config({state, routes});
+function config({store, routes, history}) {
+  Router.config({
+    store,
+    routes
+  });
 
   History.config({
     store,
