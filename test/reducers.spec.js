@@ -1,6 +1,6 @@
 import expect from 'expect';
-import reducer from '../../src/reducers';
-import {ROUTE_REQUEST, ROUTE_SUCCESS, ROUTE_ERROR} from '../../src/constants';
+import reducer from '../src/reducers';
+import {ROUTE_REQUEST, ROUTE_SUCCESS, ROUTE_ERROR} from '../src/constants';
 
 describe('Reducer', function() {
   context('when is an unknown action', function() {

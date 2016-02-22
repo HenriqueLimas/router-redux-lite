@@ -1,4 +1,4 @@
-import {ROUTE_REQUEST, ROUTE_SUCCESS, ROUTE_ERROR} from '../constants';
+import {ROUTE_REQUEST, ROUTE_SUCCESS, ROUTE_ERROR} from './constants';
 
 function currentRoute(state, action) {
     return {
