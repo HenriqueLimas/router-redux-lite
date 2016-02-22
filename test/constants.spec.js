@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as constants from '../../src/constants';
+import * as constants from '../src/constants';
 
 describe('Constants:', function() {
   it('should has ROUTE_REQUEST', function() {
