@@ -1,5 +1,5 @@
 import expect from 'expect';
-import {Router} from '../../src';
+import {Router} from '../src';
 
 describe('Router', function() {
   it('should return a public api', function() {

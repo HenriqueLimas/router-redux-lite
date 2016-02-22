@@ -1,4 +1,4 @@
-import {navigate} from '../history';
+import {navigate} from './history';
 
 const PARAMETER_REGEXP = /([:*])(\w+)/g;
 const WILDCARD_REGEXP = /\*/g;
