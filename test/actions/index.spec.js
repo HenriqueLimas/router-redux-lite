@@ -32,4 +32,35 @@ describe('Actions', function() {
       expect(actions.errorRoute('/path').uri).toBe('/path');
     });
   });
+
+  describe('navigate():', function() {
+    it('should return a function', function() {
+      expect(actions.navigate()).toBeA(Function);
+    });
+
+    describe('the returned function', function() {
+      let dispatch;
+      let uri;
+      let navigationAction;
+
+      beforeEach(function() {
+        dispatch = expect.createSpy();
+        uri = '/path';
+
+        navigationAction = actions.navigate(uri);
+      });
+
+      it('should dispatch an requestRoute action.', function() {
+        navigationAction({dispatch});
+
+        expect(dispatch).toHaveBeenCalledWith(actions.requestRoute(uri));
+      });
+
+      it('should dispatch an successRoute action.', function() {
+        navigationAction({dispatch});
+
+        expect(dispatch).toHaveBeenCalledWith(actions.successRoute(uri));
+      });
+    });
+  });
 });

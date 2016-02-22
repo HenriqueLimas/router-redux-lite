@@ -22,20 +22,8 @@ export function errorRoute(uri) {
 }
 
 export function navigate(uri) {
-
+    return function({dispatch, getState}) {
+        dispatch(requestRoute(uri));
+        dispatch(successRoute(uri));
+    };
 }
-// function navigate(dispatch, getState) {
-//     dispatchRequest();
-//     getCurrentRoute();
-
-//     if currentRouteExists {
-//         runOnEnter();
-
-//         if resolve
-//         return resolveAndDispatchSuccess(); // (Promise)
-//         else
-//             return dispatchSuccess(); // (Promise)
-//     } else {
-//         return dispatchError(); // Error 404 (Promise)
-//     }
-// }
