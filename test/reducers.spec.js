@@ -33,7 +33,10 @@ describe('Reducer', function() {
     beforeEach(function() {
       action = {
         type: ROUTE_REQUEST,
-        uri: '/path'
+        uri: '/path',
+        params: {
+          id: 42
+        }
       }
     });
 
@@ -44,7 +47,9 @@ describe('Reducer', function() {
           isChanging: true,
           didInvalidate: false,
           uri: '/path',
-          params: {}
+          params: {
+            id: 42
+          }
         }
       };
 
@@ -58,7 +63,10 @@ describe('Reducer', function() {
     beforeEach(function() {
       action = {
         type: ROUTE_SUCCESS,
-        uri: '/path'
+        uri: '/path',
+        params: {
+          id: 42
+        }
       }
     });
 
@@ -69,7 +77,9 @@ describe('Reducer', function() {
           isChanging: false,
           didInvalidate: false,
           uri: '/path',
-          params: {}
+          params: {
+            id: 42
+          }
         }
       };
 
@@ -94,7 +104,7 @@ describe('Reducer', function() {
           isChanging: false,
           didInvalidate: true,
           uri: '/path',
-          params: {}
+          params: undefined
         }
       };
 

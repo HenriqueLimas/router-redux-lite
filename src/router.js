@@ -54,7 +54,7 @@ function addSubscriberInto(store) {
       matchedRoutes.forEach((match) => match.route.handler(currentRoute));
 
       if (matchedRoutes.length) {
-        navigate(currentRoute.uri);
+        navigate(currentRoute.uri, matchedRoutes[matchedRoutes.length - 1].params);
       }
     }
   });

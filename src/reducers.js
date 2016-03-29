@@ -5,7 +5,7 @@ function currentRoute(state, action) {
         isChanging: action.type === ROUTE_REQUEST,
         didInvalidate: action.type === ROUTE_ERROR,
         uri: action.uri,
-        params: {}
+        params: action.params
     };
 }
 

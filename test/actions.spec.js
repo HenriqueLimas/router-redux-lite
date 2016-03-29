@@ -11,6 +11,14 @@ describe('Actions', function() {
     it('should return the uri passed', function() {
       expect(actions.requestRoute('/path').uri).toBe('/path');
     });
+
+    it('should return the params passed', function () {
+      let params = {
+        id: 42
+      };
+
+      expect(actions.requestRoute('/path', params).params).toBe(params)
+    });
   });
 
   describe('successRoute():', function() {
@@ -19,7 +27,15 @@ describe('Actions', function() {
     });
 
     it('should return the uri passed', function() {
-      expect(actions.requestRoute('/path').uri).toBe('/path');
+      expect(actions.successRoute('/path').uri).toBe('/path');
+    });
+
+    it('should return the params passed', function () {
+      let params = {
+        id: 42
+      };
+
+      expect(actions.successRoute('/path', params).params).toBe(params)
     });
   });
 
@@ -41,25 +57,27 @@ describe('Actions', function() {
     describe('the returned function', function() {
       let dispatch;
       let uri;
+      let params;
       let navigationAction;
 
       beforeEach(function() {
         dispatch = expect.createSpy();
         uri = '/path';
+        params = {id: 42};
 
-        navigationAction = actions.navigate(uri);
+        navigationAction = actions.navigate(uri, params);
       });
 
       it('should dispatch an requestRoute action.', function() {
         navigationAction({dispatch});
 
-        expect(dispatch).toHaveBeenCalledWith(actions.requestRoute(uri));
+        expect(dispatch).toHaveBeenCalledWith(actions.requestRoute(uri, params));
       });
 
       it('should dispatch an successRoute action.', function() {
         navigationAction({dispatch});
 
-        expect(dispatch).toHaveBeenCalledWith(actions.successRoute(uri));
+        expect(dispatch).toHaveBeenCalledWith(actions.successRoute(uri, params));
       });
     });
   });

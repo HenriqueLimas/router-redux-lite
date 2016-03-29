@@ -1,16 +1,18 @@
 import {ROUTE_REQUEST, ROUTE_SUCCESS, ROUTE_ERROR} from './constants';
 
-export function requestRoute(uri) {
+export function requestRoute(uri, params) {
     return {
         type: ROUTE_REQUEST,
-        uri: uri
+        uri: uri,
+        params: params
     }
 }
 
-export function successRoute(uri) {
+export function successRoute(uri, params) {
     return {
         type: ROUTE_SUCCESS,
-        uri: uri
+        uri: uri,
+        params: params
     }
 }
 
@@ -21,9 +23,9 @@ export function errorRoute(uri) {
     };
 }
 
-export function navigate(uri) {
+export function navigate(uri, params) {
     return function({dispatch, getState}) {
-        dispatch(requestRoute(uri));
-        dispatch(successRoute(uri));
+        dispatch(requestRoute(uri, params));
+        dispatch(successRoute(uri, params));
     };
 }
