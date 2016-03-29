@@ -20,13 +20,15 @@ describe('Router', function() {
 
     context('when the listen subscriber added is executed', function() {
       it('should execute all the handlers of the routes matched.', function() {
+        let current = {
+          uri: '/path'
+        };
+
         let store = {
           getState() {
             return {
               router: {
-                current: {
-                  uri: '/path'
-                }
+                current: current
               }
             };
           },
@@ -39,6 +41,9 @@ describe('Router', function() {
           route: '/path',
           handler: expect.createSpy()
         }];
+
+        let expected = current;
+        expected.params = null
 
         Router.config({store, routes});
 

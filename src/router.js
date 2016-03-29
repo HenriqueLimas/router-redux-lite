@@ -51,10 +51,18 @@ function addSubscriberInto(store) {
 
       let matchedRoutes = match(currentRoute.uri, _routes);
 
-      matchedRoutes.forEach((match) => match.route.handler(currentRoute));
+      let route = Object.keys(currentRoute).reduce((route, key) => {
+        route[key] = currentRoute[key];
+        return route;
+      }, {});
+
+      matchedRoutes.forEach((match) => {
+        route.params = match.params;
+        match.route.handler(route);
+      });
 
       if (matchedRoutes.length) {
-        navigate(currentRoute.uri, matchedRoutes[matchedRoutes.length - 1].params);
+        navigate(currentRoute.uri);
       }
     }
   });
